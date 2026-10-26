@@ -1,0 +1,26 @@
+# One configuration serving both WMS and WMTS from the same cache.
+# Source URL is a placeholder (see pattern 01): capabilities
+# documents generate offline; tile requests would fail, as expected.
+services:
+  demo:
+  wms:
+    srs: ['EPSG:3857']
+    image_formats: ['image/png']
+  wmts:
+layers:
+  - name: demo_layer
+    title: Demo layer
+    sources: [demo_cache]
+caches:
+  demo_cache:
+    grids: [webmercator]
+    sources: [demo_source]
+sources:
+  demo_source:
+    type: wms
+    req:
+      url: http://localhost:9999/wms?
+      layers: demo
+grids:
+  webmercator:
+    base: GLOBAL_WEBMERCATOR

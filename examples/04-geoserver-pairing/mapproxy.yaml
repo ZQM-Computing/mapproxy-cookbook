@@ -1,0 +1,29 @@
+# Proxy GeoServer WMS layers through MapProxy.
+# GEOSERVER_HOST is a placeholder: replace it with a GeoServer you
+# control. No credentials appear in this config — it proxies public
+# layers only; authenticated layers are a deployment decision, not
+# part of this pattern. Capabilities documents generate from config
+# without contacting the source, so the smoke check below passes
+# offline; tile requests need the real GeoServer.
+services:
+  demo:
+  wms:
+    srs: ['EPSG:3857']
+    image_formats: ['image/png']
+layers:
+  - name: geoserver_demo
+    title: GeoServer demo layer (proxied)
+    sources: [geoserver_cache]
+caches:
+  geoserver_cache:
+    grids: [webmercator]
+    sources: [geoserver_source]
+sources:
+  geoserver_source:
+    type: wms
+    req:
+      url: http://GEOSERVER-PLACEHOLDER:8080/geoserver/wms?
+      layers: demo_workspace:demo_layer
+grids:
+  webmercator:
+    base: GLOBAL_WEBMERCATOR

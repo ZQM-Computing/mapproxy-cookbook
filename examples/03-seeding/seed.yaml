@@ -1,0 +1,17 @@
+# Seed task for the demo cache: levels 0-2 over a small synthetic
+# coverage. The bbox is a 20 km square in EPSG:3857 near the origin —
+# not a real place of interest. Seeding fetches tiles from the source,
+# so a real seed run needs a live source; this pattern's runnable
+# checks are --summary and --dry-run, which list tasks without
+# fetching anything.
+seeds:
+  demo_seed:
+    caches: [demo_cache]
+    levels:
+      from: 0
+      to: 2
+    coverages: [demo_coverage]
+coverages:
+  demo_coverage:
+    bbox: [-10000, -10000, 10000, 10000]
+    srs: EPSG:3857

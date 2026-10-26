@@ -1,0 +1,27 @@
+# Minimal MapProxy configuration: one WMS source, one cache, one layer.
+# The source URL is a placeholder (nothing listens on 9999). MapProxy
+# generates capabilities documents from this config without contacting
+# the source, so the smoke checks below pass offline; tile requests
+# against the placeholder source would fail, which is expected.
+services:
+  demo:
+  wms:
+    srs: ['EPSG:3857']
+    image_formats: ['image/png']
+layers:
+  - name: demo_layer
+    title: Demo layer
+    sources: [demo_cache]
+caches:
+  demo_cache:
+    grids: [webmercator]
+    sources: [demo_source]
+sources:
+  demo_source:
+    type: wms
+    req:
+      url: http://localhost:9999/wms?
+      layers: demo
+grids:
+  webmercator:
+    base: GLOBAL_WEBMERCATOR
