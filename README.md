@@ -11,7 +11,7 @@
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-A **MapProxy cookbook** — cached and merged WMS/WMTS services. Patterns are drawn from the ZQM fleet's wave-11 installs (MapProxy 7.0.0 on Node-1, serve-proven on 8084) and are design-only until fleet-validated. It is intended for Platform engineers who cache, reproject, and merge map services. Validate each pattern against your own data, software versions, and operating environment before adopting it.
+A **MapProxy cookbook** — cached and merged WMS/WMTS services. Patterns are drawn from the ZQM fleet's wave-11 installs (MapProxy 7.0.0 on Node-1, serve-proven on 8084) (as of Oct 2026; verify against the current fleet) and are design-only until fleet-validated. It is intended for Platform engineers who cache, reproject, and merge map services. Validate each pattern against your own data, software versions, and operating environment before adopting it.
 
 ## Repository role and status
 
